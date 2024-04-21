@@ -6,7 +6,7 @@ uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 it('user can login', function () {
 
     $user = \App\Models\User::factory()->create();
-    $response = $this->postJson('/api/auth/login', [
+    $response = $this->postJson('/api/login', [
         'email' => $user->email,
         'password' => 'password'
     ]);
@@ -21,7 +21,7 @@ it('user can login', function () {
 it('user cant login', function () {
 
     $user = \App\Models\User::factory()->create();
-    $response = $this->postJson('/api/auth/login', [
+    $response = $this->postJson('/api/login', [
         'email' => $user->email,
         'password' => 'pass'
     ]);

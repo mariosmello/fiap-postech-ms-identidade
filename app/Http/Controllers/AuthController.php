@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
 
+    public function store(CreateUserRequest $request)
+    {
+        $user = new User($request->safe()->only('name','email', 'password'));
+        $user->save();
+        return response()->json([], 201);
+    }
 
     /**
      * Get a JWT via given credentials.
