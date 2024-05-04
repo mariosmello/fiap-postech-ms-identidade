@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateUserRequest extends FormRequest
 {
@@ -11,11 +12,7 @@ class CreateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (auth()->user()) {
-            return true;
-        }
-
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -27,7 +24,7 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required'
         ];
     }
