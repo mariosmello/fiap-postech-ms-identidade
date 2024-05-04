@@ -1,10 +1,10 @@
-name: Run Pest Tests
+name: Run Tests
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ develop, main ]
 
 jobs:
   run-tests:
