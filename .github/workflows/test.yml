@@ -47,7 +47,7 @@ jobs:
           DB_PASSWORD: root
 
       - name: Run Pest tests
-        run: ./vendor/bin/pest --coverage
+        run: ./vendor/bin/pest --coverage-clover=coverage.xml
         env:
           DB_HOST: 127.0.0.1
           DB_DATABASE: test_identidade
