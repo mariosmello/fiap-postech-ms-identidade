@@ -3,12 +3,12 @@ name: "Deploy to Google Cloud Run"
 on:
   pull_request:
     branches:
-      - 'develop'
-      - 'main'
+      - main
+    types: [closed]
 
 jobs:
   deploy:
-    needs: run-tests
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
