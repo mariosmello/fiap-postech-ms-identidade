@@ -5,13 +5,10 @@ on:
     branches:
       - 'develop'
       - 'main'
-  push:
-    branches:
-      - main
-      - develop
 
 jobs:
   deploy:
+    needs: run-tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
