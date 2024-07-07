@@ -9,7 +9,7 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->append(\Bepsvpt\SecureHeaders\SecureHeadersMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
